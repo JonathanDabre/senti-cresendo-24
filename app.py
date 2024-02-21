@@ -1,16 +1,12 @@
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
 import seaborn as sns
 import matplotlib.pyplot as plt
 from nltk.sentiment import SentimentIntensityAnalyzer
-import matplotlib
-matplotlib.use('TkAgg')
+
 # Download NLTK resources
 import nltk
-nltk.download('punkt')
-nltk.download('maxent_ne_chunker')
-nltk.download('words')
+nltk.download('vader_lexicon')
 
 # Function to perform sentiment analysis
 def perform_sentiment_analysis(df):
@@ -39,10 +35,7 @@ def perform_sentiment_analysis(df):
         else:
             sentiment_classifications.append('Neutral')
             
-    
     merged_df['Sentiment Classification'] = sentiment_classifications
-
-
     return merged_df
 
 # Load data
@@ -97,7 +90,6 @@ def main():
     axs[2].set_title('Negative')
     st.pyplot(fig)
     
-
     # Histogram of compound scores
     plt.figure(figsize=(8, 6))
     plt.hist(df_with_sentiment['compound'], bins=30, color='skyblue', edgecolor='black')
@@ -119,7 +111,5 @@ def main():
     st.pyplot(plt.gcf())
     
     
-
-
 if __name__ == '__main__':
     main()
