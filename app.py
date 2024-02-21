@@ -53,7 +53,7 @@ def main():
     st.title('Sentiment Analysis of Mouthwash Reviews')
     
     # Select file to load
-    selected_file = st.selectbox("Select Product", ['colgateCavityProtection.csv', 'mouthwash.csv', 'ListerineReviews.csv', 'MaxfreshMouthwash.csv', 'toothbrush.csv', 'toothpaste.csv', 'ListerineTotalCareMildTaste.csv'])
+    selected_file = st.selectbox("Select Product", ['colgateCavityProtection.csv','ColgateVisibleWhiteToothpaste.csv', 'mouthwash.csv', 'ListerineReviews.csv', 'MaxfreshMouthwash.csv', 'toothbrush.csv', 'toothpaste.csv', 'ListerineTotalCareMildTaste.csv'])
 
     # Load data
     df = load_data(f'./input/{selected_file}')
@@ -101,14 +101,16 @@ def main():
     st.pyplot(plt.gcf())
     
     # Boxplot of sentiment scores by rating
-    plt.figure(figsize=(10, 6))
-    sns.boxplot(x='Rating', y='compound', hue='Rating', data=df_with_sentiment, palette='viridis', legend=False)
-    plt.title('Boxplot of Sentiment Scores by Rating')
-    plt.xlabel('Rating')
-    plt.ylabel('Compound Score')
+    # if(df_with_sentiment['Rating']):
+    #     plt.figure(figsize=(10, 6))
+    #     sns.boxplot(x='Index', y='compound', hue='Rating', data=df_with_sentiment, palette='viridis', legend=False)
+    #     plt.title('Boxplot of Sentiment Scores by Rating')
+    #     plt.xlabel('Index')
+    #     plt.ylabel('Compound Score')
 
-    # Display the figure using Streamlit
-    st.pyplot(plt.gcf())
+    #     # Display the figure using Streamlit
+    #     st.pyplot(plt.gcf())
+    
     
     
 if __name__ == '__main__':
